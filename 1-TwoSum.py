@@ -2,6 +2,8 @@
 Given an array of integers, return indices of the two numbers such that they add up to a specific target.
 You may assume that each input would have exactly one solution, and you may not use the same element twice.
 """
+
+
 class Solution(object):
     def twoSum(self, nums, target):
         """
@@ -18,7 +20,7 @@ class Solution(object):
         #             continue
         #         if nums[i] + nums[j] == target:
         #             return [i, j]
-        
+
         # 方法二、两遍字典：
         # dict1 = {}
         # for i in range(len(nums)):
@@ -27,7 +29,7 @@ class Solution(object):
         #     component = target - nums[i]
         #     if dict1.get(component) and dict1[component] != i:
         #         return [i, dict1[component]]
-            
+
         # 方法三、一遍字典：
         dict2 = {}
         for i in range(len(nums)):
@@ -35,8 +37,9 @@ class Solution(object):
             if dict2.get(component) != None:
                 return [dict2[component], i]
             dict2[nums[i]] = i
-                
-nums = [-3,4,3,90]
+
+
+nums = [-3, 4, 3, 90]
 target = 0
 S = Solution()
 print(S.twoSum(nums, target))
