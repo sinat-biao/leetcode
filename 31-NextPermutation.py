@@ -9,26 +9,6 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
 """
 class Solution(object):
     
-    def subsetsort(self, nums, start, end):
-        i = start
-        j = end
-        if start < end:
-            tmp = nums[i]
-            while i < j:
-                while i < j and nums[j] >= tmp:
-                    j -= 1
-                if i < j:
-                    nums[i] = nums[j]
-                    i += 1
-                while i < j and nums[i] <= tmp:
-                    i += 1
-                if i < j:
-                    nums[j] = nums[i]
-                    j -= 1
-            nums[i] = tmp
-            self.subsetsort(nums, start+1, end)
-            self.subsetsort(nums, start, end-1)
-    
     def nextPermutation(self, nums):
         """
         :type nums: List[int]
