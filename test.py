@@ -34,7 +34,3 @@ def list_sum(num_list):
 # print(list_sum([1,2,3,4,5]))
 
 print(ord(str(3)))
-
-
-
-# test add 1

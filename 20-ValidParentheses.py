@@ -32,7 +32,10 @@ class Solution(object):
                 p = stack.pop()
                 if p != '{':
                     return False
-        return True
+        if len(stack) == 0:
+            return True
+        else:
+            return False
 
 S = Solution()
 s = '()'

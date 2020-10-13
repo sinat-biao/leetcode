@@ -15,12 +15,12 @@ class Solution(object):
         #         return nums[i]
         
         # 方法二：遍历搜索（超时）
-        # i = 0
-        # j = 0
-        # for i in range(len(nums)):
-        #     for j in range(i+1, len(nums)):
-        #         if nums[i] == nums[j]:
-        #             return nums[i]
+        i = 0
+        j = 0
+        for i in range(len(nums)):
+            for j in range(i+1, len(nums)):
+                if nums[i] == nums[j]:
+                    return nums[i]
         
         # 方法三：二分搜索
         # 参看题解
