@@ -9,7 +9,7 @@ class Solution(object):
         :type b: str
         :rtype: str
         """
-        # 方法一：依次累加
+        # 方法一：模拟进位运算，依次累加
         # n_a = len(a)
         # n_b = len(b)
         # n_min = min(n_a, n_b)
