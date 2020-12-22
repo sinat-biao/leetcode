@@ -1,50 +1,58 @@
-package com.leetcode.java;
-
-import java.util.HashSet;
+package com.example.leetcode;
 
 class Solution392 {
     public boolean isSubsequence(String s, String t) {
-        int j = 0;
+        // ·½·¨Ò»£ºË«Ö¸Õë
+        // int i = 0, j = 0;
+        // while (i < s.length() && j < t.length()) {
+        //     while (j < t.length() && t.charAt(j) != s.charAt(i)) {
+        //         j++;
+        //     }
+        //     if (j >= t.length()) {
+        //         break;
+        //     }
+        //     i++;
+        //     j++;
+        // }
+        // if (i >= s.length()) {
+        //     return true;
+        // } else {
+        //     return false;
+        // }
+    	
+        // ·½·¨¶þ£º¶¯Ì¬¹æ»®
+        int[][] data = new int[t.length() + 1][26];
+        // ½«×îºóÒ»ÐÐ¸³ÖµÎª t µÄ³¤¶È
+        for (int i = 0; i < 26; i++) {
+            data[t.length()][i] = t.length();
+        }
+        // ¶¯Ì¬¹æ»®»º´æ
+        // ×´Ì¬×ªÒÆ¹«Ê½£º
+        // 1. t[i] == i : data[i][j] = t[i];
+        // 2. t[i] != i : data[i][j] = data[i+1][j];
+        for (int i = t.length() - 1; i >= 0; i--) {
+            for (int j = 0; j < 26; j++) {
+                if (t.charAt(i) == 'a' + j) {
+                    data[i][j] = i;
+                } else {
+                    data[i][j] = data[i+1][j];
+                }
+            }
+        }
+
+        // ËÑË÷ s
+        int tt = 0;
         for (int i = 0; i < s.length(); i++) {
-            while (j < t.length() && t.charAt(j) != s.charAt(i)) {
-                j++;
-            }
-            if (j < t.length()) {
-                System.out.print(j + " " + t.charAt(j) + "\n");
-            }
-            if (j == t.length()) {
+            if (data[tt][s.charAt(i) - 'a'] == t.length()) {
                 return false;
             }
-            j++;
+            // ÐèÒª½«ÏÂÒ»¸öËÑÑ°µÄÎ»ÖÃÒÆµ½ t ×Ö·ûÆ¥ÅäµÄ×Ö·ûµÄÏÂÒ»¸öÎ»ÖÃ
+            tt = data[tt][s.charAt(i) - 'a'] + 1;
         }
         return true;
-    }
-
-    public boolean isSubsequence2(String s, String t) {
-        // æ–¹æ³•äºŒï¼šåŒæŒ‡é’ˆä¸€æ¬¡éåŽ†
-        int i = 0;
-        int j = 0;
-        while (j < t.length()) {
-            if (t.charAt(j) != s.charAt(i)) {
-                j++;
-            } else {
-                i++;
-                j++;
-            }
-        }
-        if (i == s.length()) {
-            return true;
-        } else {
-            return false;
-        }
     }
 }
 
 public class _392_IsSubsequence {
-    public static void main(String[] args) {
-        Solution392 solution392 = new Solution392();
-        System.out.println(solution392.isSubsequence2("abc", "ahbgdc"));
-        System.out.println(solution392.isSubsequence2("axc", "ahbgdc"));
-        System.out.println(solution392.isSubsequence2("axc", "ahbgdx"));
-    }
+
 }
